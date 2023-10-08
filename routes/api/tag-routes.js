@@ -27,6 +27,7 @@ router.get('/:id', async (req, res) => {
       res.status(400).json({ message: 'No Product found with this ID' });
       return;
     }
+
     res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
@@ -63,7 +64,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const tagData = await Tag.destroy({
       where: {
-        id: req / params.id
+        id: req.params.id
       }
     });
     if (!tagData) {
