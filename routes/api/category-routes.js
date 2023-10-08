@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { condition } = require('sequelize');
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
@@ -11,7 +10,7 @@ router.get('/', async (req, res) => {
     const categoryData = await Category.findAll({
       include: [{ model: Product }]
     });
-    restart.status(200).json(categoryData)
+    res.status(200).json(categoryData)
   } catch (err) {
     res.status(500).json(err);
   }
